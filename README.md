@@ -12,9 +12,28 @@ Currently there are two types of image available:
 - `latest`, `cpu` - lightweight image for CPU only workloads
 
 
-## Usage
+## Mesos: Usage
 
-### docker
+#### Run agent in oversubscribed mode in CPU.
+
+Copy the mesos-agent.service to the appropiate path. This example use `Fixed` Resource Estimator and `Load` QoS Controller by default. These parameters are added in mesos-agent daemon to make resources oversubscribed in the agent:
+
+```
+--resource_estimator="org_apache_mesos_FixedResourceEstimator"
+--qos_controller="org_apache_mesos_LoadQoSController" 
+--oversubscribed_resources_interval=15secs 
+--qos_correction_interval_min="20secs" 
+--modules=file:///path/to/modules.json"
+```
+
+#### Run the framework with revocable resources
+
+The docker image is downloaded from repo `aidaph/folding-at-home:latest`. To run the framework:
+
+```
+python framework.py "zk://IPMESOSMASTER:2181/mesos"
+```
+
 
 ```
 docker run \
