@@ -16,7 +16,7 @@ Currently there are two types of image available:
 
 #### Run agent in oversubscribed mode in CPU.
 
-This example use `Fixed` Resource Estimator and `Load` QoS Controller by default. These parameters are added in mesos-agent daemon to make resources oversubscribed in the agent:
+This example uses `Fixed` Resource Estimator and `Load` QoS Controller by default. These parameters are added in mesos-agent daemon to make resources oversubscribed in the agent:
 
 ```
 --resource_estimator="org_apache_mesos_FixedResourceEstimator"
@@ -33,7 +33,6 @@ Change the `commandinfo.value` inside the framework to fit your credentials. Set
 
 ```
 python framework.py "zk://IPMESOSMASTER:2181/mesos"
-
 ```
 
 #### Run the docker locally without any framework
