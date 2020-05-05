@@ -70,7 +70,7 @@ class MyScheduler(Scheduler):
                 containerinfo.docker.CopyFrom(dockerinfo)
             
                 commandinfo = mesos_pb2.CommandInfo()
-                commandinfo.value = "/opt/fahclient/FAHClient --power=medium --user='mesos' --team='ifca-mesos' --passkey='mesos1234ifca' "
+                commandinfo.value = "/opt/fahclient/FAHClient --power=medium --user='XXX' --team='XXX' --passkey='XXX' "
 
                 task.container.CopyFrom(containerinfo)
                 task.command.CopyFrom(commandinfo)
@@ -148,6 +148,10 @@ class MyScheduler(Scheduler):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print "Usage: %s master" % sys.argv[0]
+        sys.exit(1)
+
     framework       = mesos_pb2.FrameworkInfo()
     framework.user  = "" # Have Mesos fill in the current user.
     framework.name  = "MyFramework"
@@ -159,7 +163,7 @@ if __name__ == '__main__':
     driver = MesosSchedulerDriver(
             MyScheduler(), 
             framework,
-            "zk://172.16.96.12:2181,172.16.96.19:2181/mesos"
+            sys.argv[1]
             )
     driver.run()
 

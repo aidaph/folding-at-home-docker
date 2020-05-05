@@ -8,7 +8,7 @@
           "parameters": [
             {
               "key": "resources",
-              "value": "cpus:14"
+              "value": "cpus:16;mem:28000"
             }
           ]
         }
@@ -21,11 +21,11 @@
           "parameters": [
              {
                "key": "load_threshold_5min",
-               "value": "6"
+               "value": "60"
              },
              {
                "key": "load_threshold_15min",
-               "value": "4"
+               "value": "60"
              }
            ]
       }
